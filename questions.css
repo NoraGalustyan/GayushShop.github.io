@@ -1,0 +1,30 @@
+.faq {
+  width: 80%;
+  margin: 0 auto;
+}
+
+details {
+  background: rgb(255, 255, 255);
+  border: solid #ddd;
+  border-radius: 20px;
+  border-color: #8c9c34;
+  padding: 0.5em;
+  margin-bottom: 1em;
+  /* text-indent: 7%;
+  text-align: justify; */
+}
+
+summary {
+  font-weight: bold;
+  cursor: pointer;
+  color: #000000;
+}
+
+details p {
+  text-indent: 7%;
+  text-align: justify;
+}
+
+details[open] {
+  background-color: rgb(255, 255, 255);
+}

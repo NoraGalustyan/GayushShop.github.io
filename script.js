@@ -27,102 +27,77 @@ const navSlide = () => {
 
 navSlide();
 
-// КАРУСЕЛЬ
-const carouselTrack = document.querySelector(".carousel-track");
-const slides = Array.from(document.querySelectorAll(".carousel-slide"));
+// Галерея
+const carouselContainer = document.querySelector(".carousel-container");
+const carouselWrapper = document.querySelector(".carousel-wrapper");
+const carouselItems = document.querySelectorAll(".carousel-item");
 const prevButton = document.querySelector(".carousel-button.prev");
 const nextButton = document.querySelector(".carousel-button.next");
-const colorButtons = document.querySelectorAll(".color-button");
-const productImages = document.querySelectorAll(".product-image");
-const imageModal = document.getElementById("imageModal");
-const modalImage = document.getElementById("modalImage");
-const closeButton = document.querySelector(".close-button");
 
-let slideWidth = slides[0].getBoundingClientRect().width;
-let currentSlide = 0;
+let itemWidth;
+let currentPosition = 0;
+let itemsPerSlide = 2; // По умолчанию 2 элемента на слайд
 
-// Функция для установки позиции слайдов
-function setSlidePosition(slide, index) {
-  slide.style.left = slideWidth * index + "px";
-}
-
-slides.forEach(setSlidePosition);
-
-// Функция для перемещения к слайду
-function moveToSlide(track, currentSlide, targetSlide) {
-  track.style.transform = "translateX(-" + targetSlide.style.left + ")";
-  currentSlide = slides.indexOf(targetSlide);
-  return currentSlide;
-}
-
-// Обработчики событий для кнопок карусели
-prevButton.addEventListener("click", () => {
-  const targetSlide =
-    currentSlide === 0 ? slides[slides.length - 1] : slides[currentSlide - 1];
-  currentSlide = moveToSlide(carouselTrack, slides[currentSlide], targetSlide);
-});
-
-nextButton.addEventListener("click", () => {
-  const targetSlide =
-    currentSlide === slides.length - 1 ? slides[0] : slides[currentSlide + 1];
-  currentSlide = moveToSlide(carouselTrack, slides[currentSlide], targetSlide);
-});
-
-// Обработчики событий для кнопок цветов
-colorButtons.forEach((button) => {
-  button.addEventListener("click", (event) => {
-    const color = event.target.dataset.color;
-    const card = event.target.closest(".product-card"); // Находим карточку товара
-    const images = card.querySelectorAll(".product-image"); // Ищем изображения только в этой карточке
-
-    images.forEach((image) => {
-      if (image.dataset.color === color) {
-        image.classList.remove("hidden");
-      } else {
-        image.classList.add("hidden");
-      }
-    });
-  });
-});
-
-// Обработчики событий для увеличения изображений
-productImages.forEach((image) => {
-  image.addEventListener("click", () => {
-    modalImage.src = image.src;
-    imageModal.style.display = "block";
-
-    // Скрываем кнопки prev и next
-    prevButton.style.display = "none";
-    nextButton.style.display = "none";
-  });
-});
-
-// Обработчики событий для закрытия модального окна
-closeButton.addEventListener("click", () => {
-  imageModal.style.display = "none";
-
-  // Показываем кнопки prev и next
-  prevButton.style.display = "block";
-  nextButton.style.display = "block";
-});
-
-window.addEventListener("click", (event) => {
-  if (event.target === imageModal) {
-    imageModal.style.display = "none";
-
-    // Показываем кнопки prev и next
-    prevButton.style.display = "block";
-    nextButton.style.display = "block";
+// Функция для определения количества элементов на слайд
+function updateItemsPerSlide() {
+  if (window.innerWidth <= 820) {
+    itemsPerSlide = 1; // 1 элемент на мобильных
+  } else {
+    itemsPerSlide = 2; // 2 элемента на больших экранах
   }
+  itemWidth = carouselItems[0].offsetWidth; // Обновляем ширину элемента
+}
+
+// Вызываем функцию при загрузке и изменении размера окна
+updateItemsPerSlide();
+window.addEventListener("resize", updateItemsPerSlide);
+
+function moveCarousel(direction) {
+  updateItemsPerSlide(); // Обновляем количество элементов на слайд перед каждым движением
+  currentPosition += itemWidth * direction * itemsPerSlide;
+
+  // Ограничения для прокрутки
+  if (currentPosition > 0) {
+    currentPosition = 0;
+  } else if (
+    currentPosition <
+    -(carouselItems.length - itemsPerSlide) * itemWidth
+  ) {
+    currentPosition = -(carouselItems.length - itemsPerSlide) * itemWidth;
+  }
+
+  carouselWrapper.style.transform = `translateX(${currentPosition}px)`;
+}
+
+// Обработчики событий для кнопок
+prevButton.addEventListener("click", () => moveCarousel(1)); // Исправлено: 1 для "назад"
+nextButton.addEventListener("click", () => moveCarousel(-1)); // Исправлено: -1 для "вперед"
+
+// Сенсорное управление
+let touchStartX = 0;
+let touchEndX = 0;
+
+carouselWrapper.addEventListener("touchstart", (e) => {
+  touchStartX = e.touches[0].clientX;
 });
 
-// Адаптация размера слайдов при изменении размера окна
-window.addEventListener("resize", () => {
-  slideWidth = slides[0].getBoundingClientRect().width;
-  slides.forEach(setSlidePosition);
-  carouselTrack.style.transform =
-    "translateX(-" + slides[currentSlide].style.left + ")";
+carouselWrapper.addEventListener("touchend", (e) => {
+  touchEndX = e.changedTouches[0].clientX;
+  handleSwipe();
 });
+
+function handleSwipe() {
+  const swipeDistance = touchStartX - touchEndX;
+  const swipeThreshold = 50; // Минимальное расстояние для определения свайпа
+
+  if (swipeDistance > swipeThreshold) {
+    // Свайп влево (вперед)
+    moveCarousel(-1);
+  } else if (swipeDistance < -swipeThreshold) {
+    // Свайп вправо (назад)
+    moveCarousel(1);
+  }
+}
 
 // Отзывы
 

@@ -479,75 +479,99 @@ h2 {
   }
 }
 
-/* !!!!!!!!!!!Первый вариант услуг!!!!!!! */
-/* #services {
-  padding: 40px 20px;
-  background-color: #c9d47f88;
-  border-radius: 20px;
+/*Линзы Stellest*/
+
+/* Общие стили */
+.section-stellest-info {
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+.stellest-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+/* Текстовая часть */
+.stellest-text {
+  flex: 1 1 45%;
+  padding: 10px;
+}
+
+.stellest-title {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #000000;
+  text-align: left;
+}
+
+.stellest-subtitle {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.stellest-description {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* Фото */
+.stellest-image-container {
+  flex: 1 1 45%;
+  padding: 10px;
   text-align: center;
 }
 
-#services h2 {
-  font-size: 2em;
-  margin-bottom: 20px;
-  margin-top: 5px;
-  color: #000000;
+.big-img {
+  max-width: 70%;
+  height: auto;
+  display: inline-block;
+  border-radius: 7%;
+}
+.small-img {
+  width: 100%;
+  height: auto;
+  display: inline-block;
+  border-radius: 7%;
 }
 
-.service-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 20px;
-}
-
-.service-card {
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.icon {
-  font-size: 35px; /* Размер иконки */
-/*margin-bottom: 10px;  Отступ под иконкой 
-}*/
-
-/* .service-card h3 {
-  font-size: 1.2em;
-  color: #8c9c34;
-}
-
-.service-card p {
-  font-size: 1em;
-  color: #555555;
-}
-
-.service-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-} */
-
-/* Адаптивность 
-@media (max-width: 600px) {
-  .service-grid {
-    grid-template-columns: repeat(
-      auto-fill,
-      minmax(180px, 1fr)
-    ); /* Уменьшаем минимальную ширину до 180px 
+@media (min-width: 1445px) {
+  .small-img {
+    display: none;
   }
-} */
-
-/* Плоские устройства (например, планшеты) 
-@media (min-width: 601px) and (max-width: 900px) {
-  .service-grid {
-    grid-template-columns: repeat(
-      auto-fill,
-      minmax(220px, 1fr)
-    ); /* Уменьшаем минимальную ширину до 220px 
+}
+@media (max-width: 1444px) {
+  .big-img {
+    display: none;
   }
-} */
-/* !!!!!!!!!!!Первый вариант услуг!!!!!!! */
+}
+
+@media (min-width: 750px) and (max-width: 1444px) {
+  .small-img {
+    width: 600px;
+  }
+}
+
+/* Мобильные устройства */
+@media (max-width: 1445px) {
+  .stellest-container {
+    flex-direction: column;
+  }
+  /* Порядок элементов: h2, h3, фото, p */
+  /* .stellest-container .stellest-text h2,
+  h3 {
+    order: 1;
+  }
+  .stellest-container .stellest-image-container {
+    order: 2;
+  }
+  .stellest-container .stellest-text p {
+    order: 3;
+  } */
+  /* Остальные элементы внутри текста — по умолчанию */
+}
 
 /* Секция Адрес */
 

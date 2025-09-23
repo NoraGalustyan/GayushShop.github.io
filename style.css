@@ -174,14 +174,14 @@ h2 {
     max-width: 90%; /* Увеличиваем ширину текста */
     text-align: center; /* Центрируем текст */
     margin: auto;
-    margin-top: 140px;
+    margin-top: 200px;
   }
 }
 @media (max-width: 470px) {
   #hero {
     flex-direction: column; /* Текст вниз, фон сверху */
     background-image: url(img/hero/фон3.1.jpg); /* Мобильный фон */
-    background-position: center;
+    background-position: 45% center;
     text-align: center;
     height: 400px;
   }
@@ -409,18 +409,18 @@ h2 {
   background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  padding: 10px;
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .icon {
-  font-size: 35px;
-  margin-bottom: 10px;
+  font-size: 25px;
 }
 
 .service-card h3 {
   font-size: 1.2em;
   color: #8c9c34;
+  margin-top: 3px;
 }
 
 .service-card p {
@@ -431,6 +431,13 @@ h2 {
 .service-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.services-text {
+  margin: 0 auto;
+  margin-bottom: 30px;
+  text-indent: 5%;
+  text-align: justify;
 }
 
 /* Стили для карусели на мобильных устройствах */
@@ -515,6 +522,8 @@ h2 {
 .stellest-description {
   font-size: 16px;
   line-height: 1.5;
+  text-align: justify;
+  text-indent: 5%;
 }
 
 /* Фото */
@@ -573,6 +582,101 @@ h2 {
   /* Остальные элементы внутри текста — по умолчанию */
 }
 
+/*Оправы Nano Vista*/
+.nano-vista {
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 20px;
+}
+
+.nano-vista__container {
+  display: flex;
+  flex-direction: column; /* по умолчанию — колонка (текст сверху, фото снизу) */
+  align-items: center;
+  max-width: 100%;
+  margin: 0 auto;
+  gap: 20px;
+}
+
+.nano-img-logo {
+  flex: 1 1 100%;
+  max-width: 100%;
+}
+
+.nano-vista__image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px; /* по желанию */
+  object-fit: cover;
+}
+
+.nano-vista__text-wrapper {
+  flex: 1 1 100%;
+  max-width: 100%;
+  text-align: left;
+  text-align: justify;
+  text-indent: 5%;
+}
+
+.nano-vista__text-wrapper ul li {
+  text-align: justify;
+  text-indent: 1%;
+}
+
+.nano-vista__title {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.nano-vista__description {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #333;
+}
+
+.nano-img-deti img {
+  width: 100%; /* изображение занимает всю ширину родителя */
+  height: auto; /* сохраняет пропорции */
+  max-width: 700px; /* максимум ширины на больших экранах */
+  display: block; /* устраняет лишние отступы под изображением */
+  border-radius: 8px; /* по желанию — скругление */
+}
+
+/* Центрирование контейнера, если нужно */
+.nano-img-deti {
+  max-width: 600px; /* ограничение ширины блока */
+  margin: 0 auto; /* центрирование по горизонтали */
+  padding: 10px; /* отступы, если надо */
+}
+
+/* Можно добавить адаптивность, чтобы на очень больших экранах ширина чуть больше */
+@media screen and (min-width: 1024px) {
+  .nano-img-deti {
+    max-width: 800px;
+  }
+}
+
+/* Для широких экранов (>768px) меняем порядок и выравнивание */
+@media screen and (min-width: 1450px) {
+  .nano-vista__container {
+    flex-direction: row;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .nano-img-logo {
+    order: 1; /* Левый блок */
+    max-width: 50%;
+  }
+
+  .nano-vista__text-wrapper {
+    order: 2; /* Правый блок */
+    max-width: 50%;
+    text-align: left;
+  }
+}
+
 /* Секция Адрес */
 
 #addresses {
@@ -596,6 +700,11 @@ details {
   border-color: #8c9c34;
   padding: 0.5em;
   margin-bottom: 1em;
+}
+
+details p a {
+  color: #000000;
+  font-style: italic;
 }
 
 summary {
@@ -624,22 +733,22 @@ details[open] {
 
 /*Адреса. Две колонки*/
 /* Контейнер двух колонок */
-.address-columns {
+/* .address-columns {
   display: flex;
   position: relative;
   padding-top: 10px;
-}
+} */
 
 /* Левая и правая колонки */
-.address-left,
+/* .address-left,
 .address-right {
   flex: 1;
   padding: 0 15px;
   box-sizing: border-box;
-}
+} */
 
 /* Вертикальная черта между колонками */
-.vertical-line {
+/* .vertical-line {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -647,10 +756,10 @@ details[open] {
   transform: translateX(-50%);
   width: 2px;
   background-color: #8c9c34;
-}
+} */
 
 /* Адаптивность: на мобильных устройствах колонки становятся вертикальными */
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .address-columns {
     flex-direction: column;
   }
@@ -666,10 +775,9 @@ details[open] {
 .phone {
   text-align: center;
   margin: 0 auto;
-}
+} */
 
 /* Секция Отзывы */
-
 /* General Styles */
 .reviews-section {
   padding: 20px;
@@ -870,4 +978,30 @@ footer {
   .about-content {
     padding: 10px;
   }
+}
+
+/*Стрелка вверх*/
+/* Стили для кнопки */
+#scrollToTop {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
+  line-height: 50px;
+  text-align: center;
+  border: none;
+  background-color: #4caf50; /* цвет по желанию */
+  color: white;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s, transform 0.3s;
+  z-index: 1000;
+}
+
+#scrollToTop:hover {
+  background-color: #45a049; /* чуть темнее при наведении */
+  transform: scale(1.1);
 }

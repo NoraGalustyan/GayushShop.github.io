@@ -127,24 +127,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-//Стрелка вверх
-// Получаем кнопку
-
-const scrollButton = document.getElementById("scrollToTop");
-
-window.addEventListener("scroll", () => {
-  if (window.pageYOffset > 300) {
-    // показывать, если прокрутили >300px
-    scrollButton.style.display = "block";
-  } else {
-    scrollButton.style.display = "none";
-  }
-});
-
-scrollButton.addEventListener("click", () => {
-  window.scrollTo({ top: 0, behavior: "smooth" });
-});
-
 // Вопросы
 
 // !!!!!!!!!

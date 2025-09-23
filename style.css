@@ -491,7 +491,7 @@ h2 {
 /* Общие стили */
 .section-stellest-info {
   padding: 20px;
-  background-color: #f9f9f9;
+  background-color: #fff7ee;
 }
 
 .stellest-container {
@@ -864,12 +864,13 @@ footer {
   color: #fff;
   text-align: center;
   padding: 10px 0;
+  border-radius: 20px;
 }
 
 #contacts {
   padding: 10px 0;
   text-align: center;
-  background-color: #333;
+  /* background-color: #333; */
 }
 
 #contacts ul {
@@ -992,7 +993,7 @@ footer {
   line-height: 50px;
   text-align: center;
   border: none;
-  background-color: #4caf50; /* цвет по желанию */
+  background-color: #afbd60; /* цвет по желанию */
   color: white;
   border-radius: 50%;
   cursor: pointer;
@@ -1002,6 +1003,6 @@ footer {
 }
 
 #scrollToTop:hover {
-  background-color: #45a049; /* чуть темнее при наведении */
+  background-color: #8c9c34; /* чуть темнее при наведении */
   transform: scale(1.1);
 }

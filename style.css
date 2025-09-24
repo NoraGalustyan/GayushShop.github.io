@@ -233,6 +233,58 @@ h2 {
 
 .about {
   background-color: #fff7ee;
+  padding: 20px;
+}
+
+.about h2 {
+  text-align: center; /* заголовок по центру */
+  margin-bottom: 20px;
+}
+
+.about p {
+  max-width: 930px; /* Максимальная ширина для удобочитаемости */
+  margin: 0 auto; /* Горизонтальные отступы автоматически равны, центрирует элемент */
+  padding: 0 15px; /* Отступы слева и справа для адаптации на маленьких экранах */
+  text-align: center; /* Центрируем текст внутри параграфа */
+  box-sizing: border-box; /* Чтобы паддинги учитывались в ширине */
+  text-indent: 5%;
+  text-align: justify;
+}
+
+/* Кнопка остается с центровкой в div */
+#about a {
+  background-color: #ffffff;
+  border: 2.5px solid #bac675;
+  color: black;
+  font-size: small;
+  padding: 10px 20px;
+  margin-top: 25px;
+  text-decoration: none;
+  border-radius: 5px;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+}
+
+#about a:hover {
+  background-color: #bac675;
+  border-color: #8c9c34;
+  color: black;
+}
+
+/* Адаптивность */
+
+@media (max-width: 600px) {
+  .about p {
+    text-indent: 5%;
+    text-align: justify;
+  }
+  .about h2 {
+    font-size: 1.5rem;
+  }
+}
+
+/* .about {
+  background-color: #fff7ee;
 }
 
 .about .container {
@@ -259,26 +311,6 @@ h2 {
   padding: 20px;
 }
 
-/* #about {
-  width: 100%;
-  border-radius: 20px;
-  background: #fff7ee;
-}
-
-.about-text {
-  width: 50%;
-  text-align: center;
-  margin: auto;
-  padding-top: 1px;
-}
-
-#about p {
-  width: 90%;
-  text-indent: 7%;
-  text-align: justify;
-  margin-left: 25px;
-} */
-
 #about a {
   background-color: #ffffff;
   border-style: solid;
@@ -292,7 +324,7 @@ h2 {
   border-style: solid;
   border-color: #8c9c34;
   color: black;
-}
+} */
 
 /* Секция Hero2 */
 
@@ -341,7 +373,7 @@ h2 {
 .carousel-item {
   box-sizing: border-box;
   padding: 10px;
-  flex: 0 0 33.3333%; /* Два элемента на большом экране */
+  flex: 0 0 33.3333%; /* Три элемента на большом экране */
 }
 
 .carousel-item img {
@@ -349,6 +381,10 @@ h2 {
   height: 373.33px;
   display: block;
   border-radius: 5%;
+}
+
+#gallery p {
+  max-width: 930px;
 }
 
 /* Кнопки */
@@ -374,9 +410,9 @@ h2 {
 }
 
 #gallery p {
-  max-width: 1200px; /* Максимальная ширина для удобочитаемости */
+  /* Максимальная ширина для удобочитаемости */
   margin: 0 auto; /* Горизонтальные отступы автоматически равны, центрирует элемент */
-  padding: 0 15px; /* Отступы слева и справа для адаптации на маленьких экранах */
+  padding: 0 30px; /* Отступы слева и справа для адаптации на маленьких экранах */
   text-align: center; /* Центрируем текст внутри параграфа */
   box-sizing: border-box; /* Чтобы паддинги учитывались в ширине */
   text-indent: 5%;
@@ -393,7 +429,6 @@ h2 {
 }
 
 #services h2 {
-  /* font-size: 1.5em; */
   margin-bottom: 20px;
   margin-top: 5px;
   color: #000000;
@@ -401,8 +436,8 @@ h2 {
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 50px;
 }
 
 .service-card {
@@ -440,8 +475,28 @@ h2 {
   text-align: justify;
 }
 
+@media (max-width: 1985px) {
+  .services-grid {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 1785px) {
+  .services-grid {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 10px;
+  }
+}
+
+@media (max-width: 1664px) {
+  .services-grid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, auto); /* 4 ряда с высотой по содержимому */
+  }
+}
+
 /* Стили для карусели на мобильных устройствах */
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
   .services-carousel-container {
     overflow-x: auto; /* Включаем горизонтальную прокрутку */
     -webkit-overflow-scrolling: touch; /* Плавная прокрутка на iOS */
@@ -633,6 +688,7 @@ h2 {
   font-size: 1rem;
   line-height: 1.5;
   color: #333;
+  padding: 0 13px;
 }
 
 .nano-img-deti img {
@@ -993,7 +1049,7 @@ footer {
   line-height: 50px;
   text-align: center;
   border: none;
-  background-color: #afbd60; /* цвет по желанию */
+  background-color: #afbd6056; /* цвет по желанию */
   color: white;
   border-radius: 50%;
   cursor: pointer;
@@ -1003,6 +1059,33 @@ footer {
 }
 
 #scrollToTop:hover {
-  background-color: #8c9c34; /* чуть темнее при наведении */
+  background-color: #8c9c3494; /* чуть темнее при наведении */
   transform: scale(1.1);
+}
+
+/*Кнопка вотсап*/
+.whatsapp-button {
+  position: fixed;
+  bottom: 30px;
+  left: 30px; /* слева снизу */
+  width: 50px;
+  height: 50px;
+  background-color: #afbd6056; /* зелёный whatsapp */
+  color: white;
+  border-radius: 50%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none; /* убрать подчеркивание */
+  transition: background-color 0.3s, transform 0.3s;
+  z-index: 1000;
+}
+
+.whatsapp-button:hover,
+.whatsapp-button:focus {
+  background-color: #8c9c3494; /* чуть темнее при наведении */
+  transform: scale(1.1);
+  outline: none;
 }

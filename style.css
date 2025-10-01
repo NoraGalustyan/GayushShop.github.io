@@ -373,12 +373,13 @@ h2 {
 .carousel-item {
   box-sizing: border-box;
   padding: 10px;
-  flex: 0 0 33.3333%; /* Три элемента на большом экране */
+  flex: 0 0 50%; /* Два элемента на большом экране */
 }
 
 .carousel-item img {
-  width: 300px;
-  height: 373.33px;
+  width: 100%; /* Чтобы изображение занимало всю ширину карточки */
+  height: auto; /* Поддержать пропорции */
+  max-height: 373.33px;
   display: block;
   border-radius: 5%;
 }
@@ -547,6 +548,7 @@ h2 {
 .section-stellest-info {
   padding: 20px;
   background-color: #fff7ee;
+  border-radius: 20px;
 }
 
 .stellest-container {

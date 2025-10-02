@@ -23,18 +23,18 @@
   <body>
     <header>
       <nav class="navbar">
-        <div class="logo">
+        <div id="logo-foto" class="logo">
           <a href="index.html"
             ><img src="img/logo/logo5.png" alt="Логотип Сеть Оптик"
           /></a>
         </div>
 
         <ul class="nav-links">
-          <li><a href="#about">О нас</a></li>
-          <li><a href="#gallery">Галерея</a></li>
-          <li><a href="#services">Услуги</a></li>
-          <li><a href="#addresses">Адреса</a></li>
-          <li><a href="#reviews">Отзывы</a></li>
+          <li><a href="index.html#about">О нас</a></li>
+          <li><a href="index.html#gallery">Галерея</a></li>
+          <li><a href="index.html#services">Услуги</a></li>
+          <li><a href="index.html#addresses">Адреса</a></li>
+          <li><a href="index.html#reviews">Отзывы</a></li>
           <li><a href="#contacts">Контакты</a></li>
         </ul>
         <div class="burger">
@@ -174,7 +174,7 @@
             Джавахарлала Неру, д. 1
           </li>
           <li><i class="fas fa-phone"></i> Телефон: +7 (964) 799-90-19</li>
-          <li><i class="fas fa-envelope"></i> info@optic-site.ru</li>
+          <!-- <li><i class="fas fa-envelope"></i> info@optic-site.ru</li> -->
         </ul>
 
         <div class="social-links">
@@ -194,6 +194,26 @@
         </div>
       </section>
     </footer>
+
+    <!-- Кнопка "Вверх" -->
+    <a href="#logo-foto"
+      ><button id="scrollToTop" aria-label="Вверх" title="Наверх">
+        &#8679;
+      </button></a
+    >
+
+    <!-- Кнопка "Вотсап" -->
+    <a
+      href="https://api.whatsapp.com/send?phone=79647999019&amp;text=Здравствуйте,%20Гаяне!%20Меня%20зовут%20...,%20хочу%20проконсультироваться%20по%20очкам.%20"
+      target="_blank"
+      rel="noopener"
+      class="whatsapp-button"
+      aria-label="Открыть чат WhatsApp"
+      title="Чат WhatsApp"
+    >
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
     <script src="script.js"></script>
   </body>
 </html>

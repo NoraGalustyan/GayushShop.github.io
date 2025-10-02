@@ -27,7 +27,56 @@ const navSlide = () => {
 
 navSlide();
 
-// Галерея
+// ЗАФИКСИРОВАННАЯ КНОПКА ВАТСАП
+const whatsappButton = document.querySelector(".whatsapp-button");
+const contactsSection = document.getElementById("contacts");
+
+function checkVisibility() {
+  const contactsSectionTop = contactsSection.offsetTop;
+  const contactsSectionBottom =
+    contactsSectionTop + contactsSection.offsetHeight;
+  const windowBottom = window.pageYOffset + window.innerHeight;
+
+  if (
+    windowBottom > contactsSectionTop &&
+    window.pageYOffset < contactsSectionBottom
+  ) {
+    // Кнопка должна исчезнуть, если секция контактов видна
+    whatsappButton.style.display = "none";
+  } else {
+    // Иначе показываем кнопку
+    whatsappButton.style.display = "flex"; // важно использовать flex, чтобы иконка отображалась
+  }
+}
+
+// Проверяем при загрузке страницы и при прокрутке
+window.addEventListener("load", checkVisibility);
+window.addEventListener("scroll", checkVisibility);
+
+//КНОПКА ВВЕРХ
+const scrollToTopBtn = document.getElementById("scrollToTop");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 100) {
+    // когда прокрутка более 100px
+    scrollToTopBtn.style.display = "block"; // или для плавного появления - менять opacity и visibility
+    // Или, если используете opacity:
+    // scrollToTopBtn.style.opacity = '1';
+    // scrollToTopBtn.style.visibility = 'visible';
+  } else {
+    scrollToTopBtn.style.display = "none";
+    // Или для плавного затухания:
+    // scrollToTopBtn.style.opacity = '0';
+    // scrollToTopBtn.style.visibility = 'hidden';
+  }
+});
+
+// Обработчик клика для возвращения наверх
+scrollToTopBtn.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+// ГАЛЕРЕЯ
 const carouselContainer = document.querySelector(".carousel-container");
 const carouselWrapper = document.querySelector(".carousel-wrapper");
 const carouselItems = document.querySelectorAll(".carousel-item");
@@ -99,7 +148,7 @@ function handleSwipe() {
   }
 }
 
-// Отзывы
+// ОТЗЫВЫ
 
 document.addEventListener("DOMContentLoaded", function () {
   const carouselContainer = document.querySelector(".carousel-containers");

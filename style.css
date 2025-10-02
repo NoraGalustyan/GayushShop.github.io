@@ -391,7 +391,7 @@ h2 {
 /* Адаптивность */
 @media (max-width: 820px) {
   .carousel-item {
-    flex: 0 0 80%; /* Один элемент на мобильных */
+    flex: 0 0 93%; /* Один элемент на мобильных */
   }
 }
 
@@ -934,7 +934,7 @@ footer {
   display: inline-block;
   margin: 0 10px;
   color: #fff;
-  font-size: 20px;
+  font-size: 25px;
 }
 
 /* Адаптивность */

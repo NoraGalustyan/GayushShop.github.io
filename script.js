@@ -77,76 +77,22 @@ scrollToTopBtn.addEventListener("click", () => {
 });
 
 // ГАЛЕРЕЯ
-const carouselContainer = document.querySelector(".carousel-container");
-const carouselWrapper = document.querySelector(".carousel-wrapper");
-const carouselItems = document.querySelectorAll(".carousel-item");
-const prevButton = document.querySelector(".carousel-button.prev");
-const nextButton = document.querySelector(".carousel-button.next");
+// Получаем элементы
+const modal = document.getElementById("imageModal");
+const modalImg = document.getElementById("modalImage");
 
-let itemWidth;
-let currentPosition = 0;
-let itemsPerSlide = 2; // По умолчанию 2 элемента на слайд
-
-// Функция для определения количества элементов на слайд
-function updateItemsPerSlide() {
-  if (window.innerWidth <= 820) {
-    itemsPerSlide = 1; // 1 элемент на мобильных
-  } else {
-    itemsPerSlide = 2; // 2 элемента на больших экранах
-  }
-  itemWidth = carouselItems[0].offsetWidth; // Обновляем ширину элемента
-}
-
-// Вызываем функцию при загрузке и изменении размера окна
-updateItemsPerSlide();
-window.addEventListener("resize", updateItemsPerSlide);
-
-function moveCarousel(direction) {
-  updateItemsPerSlide(); // Обновляем количество элементов на слайд перед каждым движением
-  currentPosition += itemWidth * direction * itemsPerSlide;
-
-  // Ограничения для прокрутки
-  if (currentPosition > 0) {
-    currentPosition = 0;
-  } else if (
-    currentPosition <
-    -(carouselItems.length - itemsPerSlide) * itemWidth
-  ) {
-    currentPosition = -(carouselItems.length - itemsPerSlide) * itemWidth;
-  }
-
-  carouselWrapper.style.transform = `translateX(${currentPosition}px)`;
-}
-
-// Обработчики событий для кнопок
-prevButton.addEventListener("click", () => moveCarousel(1)); // Исправлено: 1 для "назад"
-nextButton.addEventListener("click", () => moveCarousel(-1)); // Исправлено: -1 для "вперед"
-
-// Сенсорное управление
-let touchStartX = 0;
-let touchEndX = 0;
-
-carouselWrapper.addEventListener("touchstart", (e) => {
-  touchStartX = e.touches[0].clientX;
+// Вешаем обработчик на все фото в галерее
+document.querySelectorAll(".gallery-item img").forEach((img) => {
+  img.addEventListener("click", () => {
+    modal.style.display = "flex"; // показываем окно
+    modalImg.src = img.src; // вставляем выбранное фото
+  });
 });
 
-carouselWrapper.addEventListener("touchend", (e) => {
-  touchEndX = e.changedTouches[0].clientX;
-  handleSwipe();
+// Обработчик клика по окну — закрываем при клике в любое место вне фото
+modal.addEventListener("click", () => {
+  modal.style.display = "none";
 });
-
-function handleSwipe() {
-  const swipeDistance = touchStartX - touchEndX;
-  const swipeThreshold = 50; // Минимальное расстояние для определения свайпа
-
-  if (swipeDistance > swipeThreshold) {
-    // Свайп влево (вперед)
-    moveCarousel(-1);
-  } else if (swipeDistance < -swipeThreshold) {
-    // Свайп вправо (назад)
-    moveCarousel(1);
-  }
-}
 
 // ОТЗЫВЫ
 

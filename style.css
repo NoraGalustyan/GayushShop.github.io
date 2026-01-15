@@ -983,6 +983,13 @@ footer {
   font-size: 25px;
 }
 
+.social-links .max {
+  width: 24px;
+  height: 25.5px;
+  vertical-align: sub;
+  margin-bottom: 2px;
+}
+
 /* Адаптивность */
 /* Навигация */
 @media (max-width: 768px) {
